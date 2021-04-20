@@ -1,0 +1,17 @@
+.float-left {
+    float: left;
+}
+
+.box {
+    width: 50%;
+    padding: 50px;
+    min-height: 500px;
+}
+
+.register-wrapper {
+    background-color: #9CA5D6;
+}
+
+.info-wrapper {
+    background-color: #6E7496;
+}

@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %} Elgridia - Rankingi {% endblock %}
+
+{%block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa gracza: </th><th>Poziom: </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in sorted_players %}
+                <tr>
+                    <td>{{ player.user.username }}</td><td>{{ player.level }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

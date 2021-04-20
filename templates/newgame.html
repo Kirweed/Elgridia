@@ -1,0 +1,213 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang = "pl">
+
+<head>
+
+	<meta charset = "UTF-8">
+	<title>Elgrid</title>
+
+	<link rel = "stylesheet" href = "{% static 'newgame.css' %}" type = "text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<main>
+		<div id = "player-id">{{ id }}</div>
+		<div class = "game-wrapper">
+			<div class = 'loading-overlay'> Loading ...</div>
+
+			<div class = "left-wrapper">
+
+				<div>Uzbrojenie:</div>
+
+				<div id = "armor-wrapper">
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-helmet" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div id = "main-ring" class = "armor-element float-left"></div>
+					<div id = "main-necklace" class = "armor-element float-left"></div>
+					<div id = "main-talisman" class = "armor-element float-left"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div id = "main-weapon" class = "armor-element float-left"></div>
+					<div id = "main-chest" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-pants" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-boots" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+				</div>
+
+				<div>Plecak:</div>
+				<div id = "backpack-wrapper">
+
+					<div id = "bp-1-1" class = "bp-element"></div>
+					<div id = "bp-1-2" class = "bp-element"></div>
+					<div id = "bp-1-3" class = "bp-element"></div>
+					<div id = "bp-1-4" class = "bp-element"></div>
+					<div id = "bp-1-5" class = "bp-element"></div>
+					<div id = "bp-1-6" class = "bp-element"></div>
+					<div id = "bp-1-7" class = "bp-element"></div>
+
+					<div id = "bp-2-1" class = "bp-element"></div>
+					<div id = "bp-2-2" class = "bp-element"></div>
+					<div id = "bp-2-3" class = "bp-element"></div>
+					<div id = "bp-2-4" class = "bp-element"></div>
+					<div id = "bp-2-5" class = "bp-element"></div>
+					<div id = "bp-2-6" class = "bp-element"></div>
+					<div id = "bp-2-7" class = "bp-element"></div>
+
+					<div id = "bp-3-1" class = "bp-element"></div>
+					<div id = "bp-3-2" class = "bp-element"></div>
+					<div id = "bp-3-3" class = "bp-element"></div>
+					<div id = "bp-3-4" class = "bp-element"></div>
+					<div id = "bp-3-5" class = "bp-element"></div>
+					<div id = "bp-3-6" class = "bp-element"></div>
+					<div id = "bp-3-7" class = "bp-element"></div>
+
+					<div id = "bp-4-1" class = "bp-element"></div>
+					<div id = "bp-4-2" class = "bp-element"></div>
+					<div id = "bp-4-3" class = "bp-element"></div>
+					<div id = "bp-4-4" class = "bp-element"></div>
+					<div id = "bp-4-5" class = "bp-element"></div>
+					<div id = "bp-4-6" class = "bp-element"></div>
+					<div id = "bp-4-7" class = "bp-element"></div>
+
+					<div id = "bp-5-1" class = "bp-element"></div>
+					<div id = "bp-5-2" class = "bp-element"></div>
+					<div id = "bp-5-3" class = "bp-element"></div>
+					<div id = "bp-5-4" class = "bp-element"></div>
+					<div id = "bp-5-5" class = "bp-element"></div>
+					<div id = "bp-5-6" class = "bp-element"></div>
+					<div id = "bp-5-7" class = "bp-element"></div>
+
+					<div id = "bp-6-1" class = "bp-element"></div>
+					<div id = "bp-6-2" class = "bp-element"></div>
+					<div id = "bp-6-3" class = "bp-element"></div>
+					<div id = "bp-6-4" class = "bp-element"></div>
+					<div id = "bp-6-5" class = "bp-element"></div>
+					<div id = "bp-6-6" class = "bp-element"></div>
+					<div id = "bp-6-7" class = "bp-element"></div>
+
+					<div id = "bp-7-1" class = "bp-element"></div>
+					<div id = "bp-7-2" class = "bp-element"></div>
+					<div id = "bp-7-3" class = "bp-element"></div>
+					<div id = "bp-7-4" class = "bp-element"></div>
+					<div id = "bp-7-5" class = "bp-element"></div>
+					<div id = "bp-7-6" class = "bp-element"></div>
+					<div id = "bp-7-7" class = "bp-element"></div>
+
+					<div id = "bp-8-1" class = "bp-element"></div>
+					<div id = "bp-8-2" class = "bp-element"></div>
+					<div id = "bp-8-3" class = "bp-element"></div>
+					<div id = "bp-8-4" class = "bp-element"></div>
+					<div id = "bp-8-5" class = "bp-element"></div>
+					<div id = "bp-8-6" class = "bp-element"></div>
+					<div id = "bp-8-7" class = "bp-element"></div>
+
+				</div>
+
+			</div>
+
+			<div class = "main-wrapper">
+
+				<div id = "nick">username</div>
+				<div id = "hit-points-bar"></div>
+				<div id = "hit-points-percent">100%</div>
+				<div id = "location">
+					<div id = "location-name"> location</div>
+					<div id = "coords"></div>
+				</div>
+
+                <canvas id = 'game-canvas'></canvas>
+                <canvas id = 'player-canvas'></canvas>
+
+				<div class = "tooltip"></div>
+
+			</div>
+
+			<div class = "right-wrapper">
+
+				<div id = "level"> Poziom: level</div>
+				<div id = "exp-bar"><div id = "exp-bar-progress"></div></div>
+
+				<div id = "gold-wrapper">
+					<div id = "gold-bar-label">Złoto: </div>
+					<div id = "gold-bar">0</div>
+				</div>
+
+				<div id = "premium-wrapper">
+					<div id = "premium-bar-label">Premium: </div>
+					<div id = "premium-bar">0</div>
+				</div>
+
+				<div style = "clear:both;"></div>
+
+				<div class = "stats">
+
+					<div>Statystyki postaci:</div>
+
+					<div id = "stats-label-wrapper">
+
+						<div>Punkty życia: </div>
+						<div>Atak: </div>
+						<div>Opancerzenie: </div>
+						<div class = "interval">Szybkość: </div>
+
+						<div>Siła: </div>
+						<div>Zręczność: </div>
+						<div>Inteligencja: </div>
+						<div>Szczęście: </div>
+
+					</div>
+
+					<div id = "stats-wrapper">
+
+						<div id = "hit_points">0</div>
+						<div id = "damage">0</div>
+						<div id = "armor">0</div>
+						<div id = "speed" class = "interval">0</div>
+
+						<div id = "strength">0</div>
+						<div id = "flex">0</div>
+						<div id = "intel">0</div>
+						<div id = "luck">0</div>
+
+					</div>
+
+					<div style = "clear:both;"></div>
+
+				</div>
+
+				<a href="/logout"><button id = "logout">WYLOGUJ SIĘ</button></a>
+
+			</div>
+
+		</div>
+
+	</main>
+
+	<script src = "{% static 'jquery-3.6.0.min.js' %}"></script>
+	<script src = "{% static 'newgame.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %} Elgridia - Darmowe MMORPG {% endblock %}
+
+{% block content %}
+
+    <div class="alert">
+        <div id="alert-closer">X</div>
+        {% if message %}
+        <p id="alert-message">
+            {{ message }}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class = "content-container">
+        <p><h3>Witaj podróżniku!</h3> Trafiłeś, już tylko parę chwil dzieli Cię od stąpania po ziemiach Elgridii.
+            Ta pradawna kraina skrywa w sobie wiele mrocznych tajemnic. Czy będziesz gotów im sprostać?</p>
+        <p>Elgridia to prosty MMORPG  z grafiką 2D, w którym nie znajdziesz nadmiaru dynamiki,
+            z innymi MMO ma konkurować klimatem i trudnością rozgrywki. Gra jest stale rozwijana,
+            a to co w tej chwili mogę Ci zaprezentować to bardzo wstępna wersja.
+            Zostań na dłużej i przekonaj się o potencjale tej produkcji :)
+        </p>
+    </div>
+
+    <div class = "log-form-container">
+        <form method="post">
+        {% csrf_token %}
+        <input type = "text" placeholder="Login" name = "username">
+        <input type = "password" placeholder="Hasło" name = "password">
+
+        <button type="submit">Zaloguj się!</button>
+        </form>
+
+        <p>
+            Nie masz jeszcze konta? -> <a href="/register">Zarejestruj się!</a>
+        </p>
+    </div>
+
+    <script src = "{% static 'index.js' %}"></script>
+
+{% endblock %}

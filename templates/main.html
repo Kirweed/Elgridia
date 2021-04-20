@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    {% block add_style %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class = "game-logo"><a href = "{% url 'main_page' %}">Elgridia</a></div>
+        <nav>
+            <ol>
+                <a href = "{% url 'ranks_page' %}"><li>Rankingi</li></a>
+                <a href = "{% url 'about_page' %}"><li>O produkcji</li></a>
+                <a href = "{% url 'gallery_page' %}"><li>Galeria</li></a>
+                <a href = "{% url 'changelog_page' %}"><li>Changelog</li></a>
+            </ol>
+        </nav>
+    </header>
+{% block content %}{% endblock %}
+    <footer>
+        <div class = "foot-left">Twórcą gry jest Michał Plichta</div>
+        <div class = "foot-right"> 2021 &copy; Wszelkie prawa zastrzeżone</div>
+    </footer>
+</body>
+</html>

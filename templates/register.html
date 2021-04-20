@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %} Elgridia - Rejestracja {% endblock %}
+
+{% block add_style %}
+
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="register-wrapper float-left box">
+        <h2>Tutaj możesz dokonać rejestracji.</h2>
+        <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Zarejestruj się!</button>
+        </form>
+    </div>
+    <div class="info-wrapper float-left box">
+        <p>
+            By zarejestrować się w grze Elgrid musisz dokończyć rejestracje, pamiętaj,
+            że rejestrując się akceptujesz <a href="#">regualmin</a>
+            <h5>Poprawne wypełnienie pól:</h5>
+            <ol>
+                <li>1.Twoja nazwa użytkownika musi mieć od 6 do 30 znaków</li>
+                <li>2.Twoja Hasło musi mieć od 10 do 40 znaków</li>
+                <li>3.Hasło nie może być zbyt podobne do nazwy użytkownika</li>
+                <li>4.Wpisz poprawny Email tak byśmy mogli wysłać na niego link aktywacyjny</li>
+                <li>5.Stwórz silne hasło używając dużych i małych liter oraz cyfr</li>
+            </ol>
+        </p>
+    </div>
+
+{% endblock %}

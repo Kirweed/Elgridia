@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block title %}Dziękujemy za rejestrację!{% endblock %}
+
+{% block content %}
+
+<p>
+    <h3>
+        Witaj w Elgridii {{ username }}! Twoje konto jest już aktywne, możesz teraz się zalogować!
+    </h3>
+    <a href = "{% url 'main_page' %}">Do strony główej</a>
+</p>
+
+{% endblock %}

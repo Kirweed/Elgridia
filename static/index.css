@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+    background-color: #3F4357;
+    color: #fff;
+    text-align: center;
+    margin: 0px;
+    padding: 0;
+}
+
+.alert {
+    display: none;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    width: 300px;
+    height: 130px;
+    background-color: #eb4034;
+    border: 1px solid #111;
+    border-radius: 4px;
+    -webkit-box-shadow: 3px 3px 6px 7px rgba(0,0,0,0.74);
+    box-shadow: 3px 3px 6px 7px rgba(0,0,0,0.74);
+}
+
+#alert-closer {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 20px;
+}
+
+#alert-closer:hover {
+    cursor: pointer;
+    transform: scale(1.2)
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header {
+    height: 150px;
+    width: 100%;
+    margin: 0px;
+    background-color: #252733;
+    font-size: 30px;
+    font-family: 'Ultra', serif;
+    letter-spacing: 1px;
+}
+
+.game-logo {
+    height: 100px;
+    padding: 20px;
+}
+
+nav {
+    height: 50px;
+    padding: 15px 0 15px 0;
+    font-size: 18px;
+    border-top: 1px dashed #fff;
+}
+
+header ol {
+    list-style-type: none;
+    width: 60%;
+    margin: 0 auto 0 auto;
+    display-block;
+}
+
+header ol li {
+    display: block;
+    width: 25%;
+    float: left;
+    margin: 0 auto 0 auto;
+    letter-spacing: 1.5px;
+    border-left: 1px dashed #fff;
+}
+
+header ol li:hover {
+    cursor: pointer;
+}
+
+header ol li:last-child {
+    border-right: 1px dashed #fff;
+}
+
+li {
+    list-style-type: none;
+}
+
+.content-container {
+    width: 70%;
+    min-height: 300px;
+    padding: 20px;
+    background-color: #6E7496;
+    float: left;
+}
+
+.log-form-container {
+    width: 30%;
+    height: 300px;
+    padding: 20px;
+    background-color: #9CA5D6;
+    float: left;
+}
+
+input {
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin: 15px auto 15px auto;
+    border-radius: 6px;
+    border: 2px solid #252733;
+}
+
+button {
+    width: 200px;
+    height: 40px;
+    border-radius: 6px;
+    border: 2px solid #252733;
+    background-color: #6E7496;
+    color: #fff;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #252733;
+}
+
+table {
+    margin: 30px auto 0px auto;
+}
+
+td, th {
+    border: 1px solid #fff;
+    height: 35px;
+    width: 140px;
+}
+
+footer {
+    clear: both;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #252733;
+    height: 35px;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.foot-left {
+    float: left;
+}
+
+.foot-right {
+    float: right;
+}

@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block title %}Dziękujemy za rejestrację!{% endblock %}
+
+{% block content %}
+
+<p>
+    <h2>Dziękujemy za rejestrację! Na Twój adres email, została wysłana wiadomość z linkiem aktywacyjnym.</h2>
+    <a href = "{% url 'main_page' %}">Do strony główej</a>
+</p>
+
+{% endblock %}

@@ -1,0 +1,712 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang = "pl">
+
+<head>
+
+	<meta charset = "UTF-8">
+	<title>Elgrid</title>
+
+	<link rel = "stylesheet" href = "{% static 'game.css' %}" type = "text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<main>
+		<div id = "player-id">{{ id }}</div>
+		<div class = "game-wrapper">
+
+			<div class = "left-wrapper">
+
+				<div>Uzbrojenie:</div>
+
+				<div id = "armor-wrapper">
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-helmet" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div id = "main-ring" class = "armor-element float-left"></div>
+					<div id = "main-necklace" class = "armor-element float-left"></div>
+					<div id = "main-talisman" class = "armor-element float-left"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div id = "main-weapon" class = "armor-element float-left"></div>
+					<div id = "main-chest" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-pants" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+					<div style = "clear: both;"></div>
+
+					<div class = "armor-element float-left filling-element"></div>
+					<div id = "main-boots" class = "armor-element float-left"></div>
+					<div class = "armor-element float-left filling-element"></div>
+
+				</div>
+
+				<div>Plecak:</div>
+				<div id = "backpack-wrapper">
+
+					<div id = "bp-1-1" class = "bp-element"></div>
+					<div id = "bp-1-2" class = "bp-element"></div>
+					<div id = "bp-1-3" class = "bp-element"></div>
+					<div id = "bp-1-4" class = "bp-element"></div>
+					<div id = "bp-1-5" class = "bp-element"></div>
+					<div id = "bp-1-6" class = "bp-element"></div>
+					<div id = "bp-1-7" class = "bp-element"></div>
+
+					<div id = "bp-2-1" class = "bp-element"></div>
+					<div id = "bp-2-2" class = "bp-element"></div>
+					<div id = "bp-2-3" class = "bp-element"></div>
+					<div id = "bp-2-4" class = "bp-element"></div>
+					<div id = "bp-2-5" class = "bp-element"></div>
+					<div id = "bp-2-6" class = "bp-element"></div>
+					<div id = "bp-2-7" class = "bp-element"></div>
+
+					<div id = "bp-3-1" class = "bp-element"></div>
+					<div id = "bp-3-2" class = "bp-element"></div>
+					<div id = "bp-3-3" class = "bp-element"></div>
+					<div id = "bp-3-4" class = "bp-element"></div>
+					<div id = "bp-3-5" class = "bp-element"></div>
+					<div id = "bp-3-6" class = "bp-element"></div>
+					<div id = "bp-3-7" class = "bp-element"></div>
+
+					<div id = "bp-4-1" class = "bp-element"></div>
+					<div id = "bp-4-2" class = "bp-element"></div>
+					<div id = "bp-4-3" class = "bp-element"></div>
+					<div id = "bp-4-4" class = "bp-element"></div>
+					<div id = "bp-4-5" class = "bp-element"></div>
+					<div id = "bp-4-6" class = "bp-element"></div>
+					<div id = "bp-4-7" class = "bp-element"></div>
+
+					<div id = "bp-5-1" class = "bp-element"></div>
+					<div id = "bp-5-2" class = "bp-element"></div>
+					<div id = "bp-5-3" class = "bp-element"></div>
+					<div id = "bp-5-4" class = "bp-element"></div>
+					<div id = "bp-5-5" class = "bp-element"></div>
+					<div id = "bp-5-6" class = "bp-element"></div>
+					<div id = "bp-5-7" class = "bp-element"></div>
+
+					<div id = "bp-6-1" class = "bp-element"></div>
+					<div id = "bp-6-2" class = "bp-element"></div>
+					<div id = "bp-6-3" class = "bp-element"></div>
+					<div id = "bp-6-4" class = "bp-element"></div>
+					<div id = "bp-6-5" class = "bp-element"></div>
+					<div id = "bp-6-6" class = "bp-element"></div>
+					<div id = "bp-6-7" class = "bp-element"></div>
+
+					<div id = "bp-7-1" class = "bp-element"></div>
+					<div id = "bp-7-2" class = "bp-element"></div>
+					<div id = "bp-7-3" class = "bp-element"></div>
+					<div id = "bp-7-4" class = "bp-element"></div>
+					<div id = "bp-7-5" class = "bp-element"></div>
+					<div id = "bp-7-6" class = "bp-element"></div>
+					<div id = "bp-7-7" class = "bp-element"></div>
+
+					<div id = "bp-8-1" class = "bp-element"></div>
+					<div id = "bp-8-2" class = "bp-element"></div>
+					<div id = "bp-8-3" class = "bp-element"></div>
+					<div id = "bp-8-4" class = "bp-element"></div>
+					<div id = "bp-8-5" class = "bp-element"></div>
+					<div id = "bp-8-6" class = "bp-element"></div>
+					<div id = "bp-8-7" class = "bp-element"></div>
+
+				</div>
+
+			</div>
+
+			<div class = "main-wrapper">
+
+				<div id = "nick">{{ username }}</div>
+				<div id = "hit-points-bar"></div>
+				<div id = "hit-points-percent">100%</div>
+				<div id = "location">
+					<div id = "location-name">{{ location }}</div>
+					<div id = "coords"></div>
+				</div>
+
+				<div class = "row-1 col-1 map-element float-left"></div>
+				<div class = "row-1 col-2 map-element float-left"></div>
+				<div class = "row-1 col-3 map-element float-left"></div>
+				<div class = "row-1 col-4 map-element float-left"></div>
+				<div class = "row-1 col-5 map-element float-left"></div>
+				<div class = "row-1 col-6 map-element float-left"></div>
+				<div class = "row-1 col-7 map-element float-left"></div>
+				<div class = "row-1 col-8 map-element float-left"></div>
+				<div class = "row-1 col-9 map-element float-left"></div>
+				<div class = "row-1 col-10 map-element float-left"></div>
+				<div class = "row-1 col-11 map-element float-left"></div>
+				<div class = "row-1 col-12 map-element float-left"></div>
+				<div class = "row-1 col-13 map-element float-left"></div>
+				<div class = "row-1 col-14 map-element float-left"></div>
+				<div class = "row-1 col-15 map-element float-left"></div>
+				<div class = "row-1 col-16 map-element float-left"></div>
+				<div class = "row-1 col-17 map-element float-left"></div>
+				<div class = "row-1 col-18 map-element float-left"></div>
+				<div class = "row-1 col-19 map-element float-left"></div>
+				<div class = "row-1 col-20 map-element float-left"></div>
+				<div class = "row-1 col-21 map-element float-left"></div>
+				<div class = "row-1 col-22 map-element float-left"></div>
+				<div class = "row-1 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-2 col-1 map-element float-left"></div>
+				<div class = "row-2 col-2 map-element float-left"></div>
+				<div class = "row-2 col-3 map-element float-left"></div>
+				<div class = "row-2 col-4 map-element float-left"></div>
+				<div class = "row-2 col-5 map-element float-left"></div>
+				<div class = "row-2 col-6 map-element float-left"></div>
+				<div class = "row-2 col-7 map-element float-left"></div>
+				<div class = "row-2 col-8 map-element float-left"></div>
+				<div class = "row-2 col-9 map-element float-left"></div>
+				<div class = "row-2 col-10 map-element float-left"></div>
+				<div class = "row-2 col-11 map-element float-left"></div>
+				<div class = "row-2 col-12 map-element float-left"></div>
+				<div class = "row-2 col-13 map-element float-left"></div>
+				<div class = "row-2 col-14 map-element float-left"></div>
+				<div class = "row-2 col-15 map-element float-left"></div>
+				<div class = "row-2 col-16 map-element float-left"></div>
+				<div class = "row-2 col-17 map-element float-left"></div>
+				<div class = "row-2 col-18 map-element float-left"></div>
+				<div class = "row-2 col-19 map-element float-left"></div>
+				<div class = "row-2 col-20 map-element float-left"></div>
+				<div class = "row-2 col-21 map-element float-left"></div>
+				<div class = "row-2 col-22 map-element float-left"></div>
+				<div class = "row-2 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-3 col-1 map-element float-left"></div>
+				<div class = "row-3 col-2 map-element float-left"></div>
+				<div class = "row-3 col-3 map-element float-left"></div>
+				<div class = "row-3 col-4 map-element float-left"></div>
+				<div class = "row-3 col-5 map-element float-left"></div>
+				<div class = "row-3 col-6 map-element float-left"></div>
+				<div class = "row-3 col-7 map-element float-left"></div>
+				<div class = "row-3 col-8 map-element float-left"></div>
+				<div class = "row-3 col-9 map-element float-left"></div>
+				<div class = "row-3 col-10 map-element float-left"></div>
+				<div class = "row-3 col-11 map-element float-left"></div>
+				<div class = "row-3 col-12 map-element float-left"></div>
+				<div class = "row-3 col-13 map-element float-left"></div>
+				<div class = "row-3 col-14 map-element float-left"></div>
+				<div class = "row-3 col-15 map-element float-left"></div>
+				<div class = "row-3 col-16 map-element float-left"></div>
+				<div class = "row-3 col-17 map-element float-left"></div>
+				<div class = "row-3 col-18 map-element float-left"></div>
+				<div class = "row-3 col-19 map-element float-left"></div>
+				<div class = "row-3 col-20 map-element float-left"></div>
+				<div class = "row-3 col-21 map-element float-left"></div>
+				<div class = "row-3 col-22 map-element float-left"></div>
+				<div class = "row-3 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-4 col-1 map-element float-left"></div>
+				<div class = "row-4 col-2 map-element float-left"></div>
+				<div class = "row-4 col-3 map-element float-left"></div>
+				<div class = "row-4 col-4 map-element float-left"></div>
+				<div class = "row-4 col-5 map-element float-left"></div>
+				<div class = "row-4 col-6 map-element float-left"></div>
+				<div class = "row-4 col-7 map-element float-left"></div>
+				<div class = "row-4 col-8 map-element float-left"></div>
+				<div class = "row-4 col-9 map-element float-left"></div>
+				<div class = "row-4 col-10 map-element float-left"></div>
+				<div class = "row-4 col-11 map-element float-left"></div>
+				<div class = "row-4 col-12 map-element float-left"></div>
+				<div class = "row-4 col-13 map-element float-left"></div>
+				<div class = "row-4 col-14 map-element float-left"></div>
+				<div class = "row-4 col-15 map-element float-left"></div>
+				<div class = "row-4 col-16 map-element float-left"></div>
+				<div class = "row-4 col-17 map-element float-left"></div>
+				<div class = "row-4 col-18 map-element float-left"></div>
+				<div class = "row-4 col-19 map-element float-left"></div>
+				<div class = "row-4 col-20 map-element float-left"></div>
+				<div class = "row-4 col-21 map-element float-left"></div>
+				<div class = "row-4 col-22 map-element float-left"></div>
+				<div class = "row-4 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-5 col-1 map-element float-left"></div>
+				<div class = "row-5 col-2 map-element float-left"></div>
+				<div class = "row-5 col-3 map-element float-left"></div>
+				<div class = "row-5 col-4 map-element float-left"></div>
+				<div class = "row-5 col-5 map-element float-left"></div>
+				<div class = "row-5 col-6 map-element float-left"></div>
+				<div class = "row-5 col-7 map-element float-left"></div>
+				<div class = "row-5 col-8 map-element float-left"></div>
+				<div class = "row-5 col-9 map-element float-left"></div>
+				<div class = "row-5 col-10 map-element float-left"></div>
+				<div class = "row-5 col-11 map-element float-left"></div>
+				<div class = "row-5 col-12 map-element float-left"></div>
+				<div class = "row-5 col-13 map-element float-left"></div>
+				<div class = "row-5 col-14 map-element float-left"></div>
+				<div class = "row-5 col-15 map-element float-left"></div>
+				<div class = "row-5 col-16 map-element float-left"></div>
+				<div class = "row-5 col-17 map-element float-left"></div>
+				<div class = "row-5 col-18 map-element float-left"></div>
+				<div class = "row-5 col-19 map-element float-left"></div>
+				<div class = "row-5 col-20 map-element float-left"></div>
+				<div class = "row-5 col-21 map-element float-left"></div>
+				<div class = "row-5 col-22 map-element float-left"></div>
+				<div class = "row-5 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-6 col-1 map-element float-left"></div>
+				<div class = "row-6 col-2 map-element float-left"></div>
+				<div class = "row-6 col-3 map-element float-left"></div>
+				<div class = "row-6 col-4 map-element float-left"></div>
+				<div class = "row-6 col-5 map-element float-left"></div>
+				<div class = "row-6 col-6 map-element float-left"></div>
+				<div class = "row-6 col-7 map-element float-left"></div>
+				<div class = "row-6 col-8 map-element float-left"></div>
+				<div class = "row-6 col-9 map-element float-left"></div>
+				<div class = "row-6 col-10 map-element float-left"></div>
+				<div class = "row-6 col-11 map-element float-left"></div>
+				<div class = "row-6 col-12 map-element float-left"></div>
+				<div class = "row-6 col-13 map-element float-left"></div>
+				<div class = "row-6 col-14 map-element float-left"></div>
+				<div class = "row-6 col-15 map-element float-left"></div>
+				<div class = "row-6 col-16 map-element float-left"></div>
+				<div class = "row-6 col-17 map-element float-left"></div>
+				<div class = "row-6 col-18 map-element float-left"></div>
+				<div class = "row-6 col-19 map-element float-left"></div>
+				<div class = "row-6 col-20 map-element float-left"></div>
+				<div class = "row-6 col-21 map-element float-left"></div>
+				<div class = "row-6 col-22 map-element float-left"></div>
+				<div class = "row-6 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-7 col-1 map-element float-left"></div>
+				<div class = "row-7 col-2 map-element float-left"></div>
+				<div class = "row-7 col-3 map-element float-left"></div>
+				<div class = "row-7 col-4 map-element float-left"></div>
+				<div class = "row-7 col-5 map-element float-left"></div>
+				<div class = "row-7 col-6 map-element float-left"></div>
+				<div class = "row-7 col-7 map-element float-left"></div>
+				<div class = "row-7 col-8 map-element float-left"></div>
+				<div class = "row-7 col-9 map-element float-left"></div>
+				<div class = "row-7 col-10 map-element float-left"></div>
+				<div class = "row-7 col-11 map-element float-left"></div>
+				<div class = "row-7 col-12 map-element float-left"></div>
+				<div class = "row-7 col-13 map-element float-left"></div>
+				<div class = "row-7 col-14 map-element float-left"></div>
+				<div class = "row-7 col-15 map-element float-left"></div>
+				<div class = "row-7 col-16 map-element float-left"></div>
+				<div class = "row-7 col-17 map-element float-left"></div>
+				<div class = "row-7 col-18 map-element float-left"></div>
+				<div class = "row-7 col-19 map-element float-left"></div>
+				<div class = "row-7 col-20 map-element float-left"></div>
+				<div class = "row-7 col-21 map-element float-left"></div>
+				<div class = "row-7 col-22 map-element float-left"></div>
+				<div class = "row-7 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-8 col-1 map-element float-left"></div>
+				<div class = "row-8 col-2 map-element float-left"></div>
+				<div class = "row-8 col-3 map-element float-left"></div>
+				<div class = "row-8 col-4 map-element float-left"></div>
+				<div class = "row-8 col-5 map-element float-left"></div>
+				<div class = "row-8 col-6 map-element float-left"></div>
+				<div class = "row-8 col-7 map-element float-left"></div>
+				<div class = "row-8 col-8 map-element float-left"></div>
+				<div class = "row-8 col-9 map-element float-left"></div>
+				<div class = "row-8 col-10 map-element float-left"></div>
+				<div class = "row-8 col-11 map-element float-left"></div>
+				<div class = "row-8 col-12 map-element float-left map-center"></div>
+				<div class = "row-8 col-13 map-element float-left"></div>
+				<div class = "row-8 col-14 map-element float-left"></div>
+				<div class = "row-8 col-15 map-element float-left"></div>
+				<div class = "row-8 col-16 map-element float-left"></div>
+				<div class = "row-8 col-17 map-element float-left"></div>
+				<div class = "row-8 col-18 map-element float-left"></div>
+				<div class = "row-8 col-19 map-element float-left"></div>
+				<div class = "row-8 col-20 map-element float-left"></div>
+				<div class = "row-8 col-21 map-element float-left"></div>
+				<div class = "row-8 col-22 map-element float-left"></div>
+				<div class = "row-8 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-9 col-1 map-element float-left"></div>
+				<div class = "row-9 col-2 map-element float-left"></div>
+				<div class = "row-9 col-3 map-element float-left"></div>
+				<div class = "row-9 col-4 map-element float-left"></div>
+				<div class = "row-9 col-5 map-element float-left"></div>
+				<div class = "row-9 col-6 map-element float-left"></div>
+				<div class = "row-9 col-7 map-element float-left"></div>
+				<div class = "row-9 col-8 map-element float-left"></div>
+				<div class = "row-9 col-9 map-element float-left"></div>
+				<div class = "row-9 col-10 map-element float-left"></div>
+				<div class = "row-9 col-11 map-element float-left"></div>
+				<div class = "row-9 col-12 map-element float-left"></div>
+				<div class = "row-9 col-13 map-element float-left"></div>
+				<div class = "row-9 col-14 map-element float-left"></div>
+				<div class = "row-9 col-15 map-element float-left"></div>
+				<div class = "row-9 col-16 map-element float-left"></div>
+				<div class = "row-9 col-17 map-element float-left"></div>
+				<div class = "row-9 col-18 map-element float-left"></div>
+				<div class = "row-9 col-19 map-element float-left"></div>
+				<div class = "row-9 col-20 map-element float-left"></div>
+				<div class = "row-9 col-21 map-element float-left"></div>
+				<div class = "row-9 col-22 map-element float-left"></div>
+				<div class = "row-9 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-10 col-1 map-element float-left"></div>
+				<div class = "row-10 col-2 map-element float-left"></div>
+				<div class = "row-10 col-3 map-element float-left"></div>
+				<div class = "row-10 col-4 map-element float-left"></div>
+				<div class = "row-10 col-5 map-element float-left"></div>
+				<div class = "row-10 col-6 map-element float-left"></div>
+				<div class = "row-10 col-7 map-element float-left"></div>
+				<div class = "row-10 col-8 map-element float-left"></div>
+				<div class = "row-10 col-9 map-element float-left"></div>
+				<div class = "row-10 col-10 map-element float-left"></div>
+				<div class = "row-10 col-11 map-element float-left"></div>
+				<div class = "row-10 col-12 map-element float-left"></div>
+				<div class = "row-10 col-13 map-element float-left"></div>
+				<div class = "row-10 col-14 map-element float-left"></div>
+				<div class = "row-10 col-15 map-element float-left"></div>
+				<div class = "row-10 col-16 map-element float-left"></div>
+				<div class = "row-10 col-17 map-element float-left"></div>
+				<div class = "row-10 col-18 map-element float-left"></div>
+				<div class = "row-10 col-19 map-element float-left"></div>
+				<div class = "row-10 col-20 map-element float-left"></div>
+				<div class = "row-10 col-21 map-element float-left"></div>
+				<div class = "row-10 col-22 map-element float-left"></div>
+				<div class = "row-10 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-11 col-1 map-element float-left"></div>
+				<div class = "row-11 col-2 map-element float-left"></div>
+				<div class = "row-11 col-3 map-element float-left"></div>
+				<div class = "row-11 col-4 map-element float-left"></div>
+				<div class = "row-11 col-5 map-element float-left"></div>
+				<div class = "row-11 col-6 map-element float-left"></div>
+				<div class = "row-11 col-7 map-element float-left"></div>
+				<div class = "row-11 col-8 map-element float-left"></div>
+				<div class = "row-11 col-9 map-element float-left"></div>
+				<div class = "row-11 col-10 map-element float-left"></div>
+				<div class = "row-11 col-11 map-element float-left"></div>
+				<div class = "row-11 col-12 map-element float-left"></div>
+				<div class = "row-11 col-13 map-element float-left"></div>
+				<div class = "row-11 col-14 map-element float-left"></div>
+				<div class = "row-11 col-15 map-element float-left"></div>
+				<div class = "row-11 col-16 map-element float-left"></div>
+				<div class = "row-11 col-17 map-element float-left"></div>
+				<div class = "row-11 col-18 map-element float-left"></div>
+				<div class = "row-11 col-19 map-element float-left"></div>
+				<div class = "row-11 col-20 map-element float-left"></div>
+				<div class = "row-11 col-21 map-element float-left"></div>
+				<div class = "row-11 col-22 map-element float-left"></div>
+				<div class = "row-11 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-12 col-1 map-element float-left"></div>
+				<div class = "row-12 col-2 map-element float-left"></div>
+				<div class = "row-12 col-3 map-element float-left"></div>
+				<div class = "row-12 col-4 map-element float-left"></div>
+				<div class = "row-12 col-5 map-element float-left"></div>
+				<div class = "row-12 col-6 map-element float-left"></div>
+				<div class = "row-12 col-7 map-element float-left"></div>
+				<div class = "row-12 col-8 map-element float-left"></div>
+				<div class = "row-12 col-9 map-element float-left"></div>
+				<div class = "row-12 col-10 map-element float-left"></div>
+				<div class = "row-12 col-11 map-element float-left"></div>
+				<div class = "row-12 col-12 map-element float-left"></div>
+				<div class = "row-12 col-13 map-element float-left"></div>
+				<div class = "row-12 col-14 map-element float-left"></div>
+				<div class = "row-12 col-15 map-element float-left"></div>
+				<div class = "row-12 col-16 map-element float-left"></div>
+				<div class = "row-12 col-17 map-element float-left"></div>
+				<div class = "row-12 col-18 map-element float-left"></div>
+				<div class = "row-12 col-19 map-element float-left"></div>
+				<div class = "row-12 col-20 map-element float-left"></div>
+				<div class = "row-12 col-21 map-element float-left"></div>
+				<div class = "row-12 col-22 map-element float-left"></div>
+				<div class = "row-12 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-13 col-1 map-element float-left"></div>
+				<div class = "row-13 col-2 map-element float-left"></div>
+				<div class = "row-13 col-3 map-element float-left"></div>
+				<div class = "row-13 col-4 map-element float-left"></div>
+				<div class = "row-13 col-5 map-element float-left"></div>
+				<div class = "row-13 col-6 map-element float-left"></div>
+				<div class = "row-13 col-7 map-element float-left"></div>
+				<div class = "row-13 col-8 map-element float-left"></div>
+				<div class = "row-13 col-9 map-element float-left"></div>
+				<div class = "row-13 col-10 map-element float-left"></div>
+				<div class = "row-13 col-11 map-element float-left"></div>
+				<div class = "row-13 col-12 map-element float-left"></div>
+				<div class = "row-13 col-13 map-element float-left"></div>
+				<div class = "row-13 col-14 map-element float-left"></div>
+				<div class = "row-13 col-15 map-element float-left"></div>
+				<div class = "row-13 col-16 map-element float-left"></div>
+				<div class = "row-13 col-17 map-element float-left"></div>
+				<div class = "row-13 col-18 map-element float-left"></div>
+				<div class = "row-13 col-19 map-element float-left"></div>
+				<div class = "row-13 col-20 map-element float-left"></div>
+				<div class = "row-13 col-21 map-element float-left"></div>
+				<div class = "row-13 col-22 map-element float-left"></div>
+				<div class = "row-13 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-14 col-1 map-element float-left"></div>
+				<div class = "row-14 col-2 map-element float-left"></div>
+				<div class = "row-14 col-3 map-element float-left"></div>
+				<div class = "row-14 col-4 map-element float-left"></div>
+				<div class = "row-14 col-5 map-element float-left"></div>
+				<div class = "row-14 col-6 map-element float-left"></div>
+				<div class = "row-14 col-7 map-element float-left"></div>
+				<div class = "row-14 col-8 map-element float-left"></div>
+				<div class = "row-14 col-9 map-element float-left"></div>
+				<div class = "row-14 col-10 map-element float-left"></div>
+				<div class = "row-14 col-11 map-element float-left"></div>
+				<div class = "row-14 col-12 map-element float-left"></div>
+				<div class = "row-14 col-13 map-element float-left"></div>
+				<div class = "row-14 col-14 map-element float-left"></div>
+				<div class = "row-14 col-15 map-element float-left"></div>
+				<div class = "row-14 col-16 map-element float-left"></div>
+				<div class = "row-14 col-17 map-element float-left"></div>
+				<div class = "row-14 col-18 map-element float-left"></div>
+				<div class = "row-14 col-19 map-element float-left"></div>
+				<div class = "row-14 col-20 map-element float-left"></div>
+				<div class = "row-14 col-21 map-element float-left"></div>
+				<div class = "row-14 col-22 map-element float-left"></div>
+				<div class = "row-14 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-15 col-1 map-element float-left"></div>
+				<div class = "row-15 col-2 map-element float-left"></div>
+				<div class = "row-15 col-3 map-element float-left"></div>
+				<div class = "row-15 col-4 map-element float-left"></div>
+				<div class = "row-15 col-5 map-element float-left"></div>
+				<div class = "row-15 col-6 map-element float-left"></div>
+				<div class = "row-15 col-7 map-element float-left"></div>
+				<div class = "row-15 col-8 map-element float-left"></div>
+				<div class = "row-15 col-9 map-element float-left"></div>
+				<div class = "row-15 col-10 map-element float-left"></div>
+				<div class = "row-15 col-11 map-element float-left"></div>
+				<div class = "row-15 col-12 map-element float-left"></div>
+				<div class = "row-15 col-13 map-element float-left"></div>
+				<div class = "row-15 col-14 map-element float-left"></div>
+				<div class = "row-15 col-15 map-element float-left"></div>
+				<div class = "row-15 col-16 map-element float-left"></div>
+				<div class = "row-15 col-17 map-element float-left"></div>
+				<div class = "row-15 col-18 map-element float-left"></div>
+				<div class = "row-15 col-19 map-element float-left"></div>
+				<div class = "row-15 col-20 map-element float-left"></div>
+				<div class = "row-15 col-21 map-element float-left"></div>
+				<div class = "row-15 col-22 map-element float-left"></div>
+				<div class = "row-15 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-16 col-1 map-element float-left"></div>
+				<div class = "row-16 col-2 map-element float-left"></div>
+				<div class = "row-16 col-3 map-element float-left"></div>
+				<div class = "row-16 col-4 map-element float-left"></div>
+				<div class = "row-16 col-5 map-element float-left"></div>
+				<div class = "row-16 col-6 map-element float-left"></div>
+				<div class = "row-16 col-7 map-element float-left"></div>
+				<div class = "row-16 col-8 map-element float-left"></div>
+				<div class = "row-16 col-9 map-element float-left"></div>
+				<div class = "row-16 col-10 map-element float-left"></div>
+				<div class = "row-16 col-11 map-element float-left"></div>
+				<div class = "row-16 col-12 map-element float-left"></div>
+				<div class = "row-16 col-13 map-element float-left"></div>
+				<div class = "row-16 col-14 map-element float-left"></div>
+				<div class = "row-16 col-15 map-element float-left"></div>
+				<div class = "row-16 col-16 map-element float-left"></div>
+				<div class = "row-16 col-17 map-element float-left"></div>
+				<div class = "row-16 col-18 map-element float-left"></div>
+				<div class = "row-16 col-19 map-element float-left"></div>
+				<div class = "row-16 col-20 map-element float-left"></div>
+				<div class = "row-16 col-21 map-element float-left"></div>
+				<div class = "row-16 col-22 map-element float-left"></div>
+				<div class = "row-16 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-17 col-1 map-element float-left"></div>
+				<div class = "row-17 col-2 map-element float-left"></div>
+				<div class = "row-17 col-3 map-element float-left"></div>
+				<div class = "row-17 col-4 map-element float-left"></div>
+				<div class = "row-17 col-5 map-element float-left"></div>
+				<div class = "row-17 col-6 map-element float-left"></div>
+				<div class = "row-17 col-7 map-element float-left"></div>
+				<div class = "row-17 col-8 map-element float-left"></div>
+				<div class = "row-17 col-9 map-element float-left"></div>
+				<div class = "row-17 col-10 map-element float-left"></div>
+				<div class = "row-17 col-11 map-element float-left"></div>
+				<div class = "row-17 col-12 map-element float-left"></div>
+				<div class = "row-17 col-13 map-element float-left"></div>
+				<div class = "row-17 col-14 map-element float-left"></div>
+				<div class = "row-17 col-15 map-element float-left"></div>
+				<div class = "row-17 col-16 map-element float-left"></div>
+				<div class = "row-17 col-17 map-element float-left"></div>
+				<div class = "row-17 col-18 map-element float-left"></div>
+				<div class = "row-17 col-19 map-element float-left"></div>
+				<div class = "row-17 col-20 map-element float-left"></div>
+				<div class = "row-17 col-21 map-element float-left"></div>
+				<div class = "row-17 col-22 map-element float-left"></div>
+				<div class = "row-17 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+
+				<div class = "row-18 col-1 map-element float-left"></div>
+				<div class = "row-18 col-2 map-element float-left"></div>
+				<div class = "row-18 col-3 map-element float-left"></div>
+				<div class = "row-18 col-4 map-element float-left"></div>
+				<div class = "row-18 col-5 map-element float-left"></div>
+				<div class = "row-18 col-6 map-element float-left"></div>
+				<div class = "row-18 col-7 map-element float-left"></div>
+				<div class = "row-18 col-8 map-element float-left"></div>
+				<div class = "row-18 col-9 map-element float-left"></div>
+				<div class = "row-18 col-10 map-element float-left"></div>
+				<div class = "row-18 col-11 map-element float-left"></div>
+				<div class = "row-18 col-12 map-element float-left"></div>
+				<div class = "row-18 col-13 map-element float-left"></div>
+				<div class = "row-18 col-14 map-element float-left"></div>
+				<div class = "row-18 col-15 map-element float-left"></div>
+				<div class = "row-18 col-16 map-element float-left"></div>
+				<div class = "row-18 col-17 map-element float-left"></div>
+				<div class = "row-18 col-18 map-element float-left"></div>
+				<div class = "row-18 col-19 map-element float-left"></div>
+				<div class = "row-18 col-20 map-element float-left"></div>
+				<div class = "row-18 col-21 map-element float-left"></div>
+				<div class = "row-18 col-22 map-element float-left"></div>
+				<div class = "row-18 col-23 map-element float-left"></div>
+
+
+				<div style = "clear: both;"></div>
+
+				<div class = "tooltip"></div>
+
+			</div>
+
+			<div class = "right-wrapper">
+
+				<div id = "level"> Poziom: {{ level }}</div>
+				<div id = "exp-bar"><div id = "exp-bar-progress"></div></div>
+
+				<div id = "gold-wrapper">
+					<div id = "gold-bar-label">Złoto: </div>
+					<div id = "gold-bar">0</div>
+				</div>
+
+				<div id = "premium-wrapper">
+					<div id = "premium-bar-label">Premium: </div>
+					<div id = "premium-bar">0</div>
+				</div>
+
+				<div style = "clear:both;"></div>
+
+				<div class = "stats">
+
+					<div>Statystyki postaci:</div>
+
+					<div id = "stats-label-wrapper">
+
+						<div>Punkty życia: </div>
+						<div>Atak: </div>
+						<div>Opancerzenie: </div>
+						<div class = "interval">Szybkość: </div>
+
+						<div>Siła: </div>
+						<div>Zręczność: </div>
+						<div>Inteligencja: </div>
+						<div>Szczęście: </div>
+
+					</div>
+
+					<div id = "stats-wrapper">
+
+						<div id = "hit_points">0</div>
+						<div id = "damage">0</div>
+						<div id = "armor">0</div>
+						<div id = "speed" class = "interval">0</div>
+
+						<div id = "strength">0</div>
+						<div id = "flex">0</div>
+						<div id = "intel">0</div>
+						<div id = "luck">0</div>
+
+					</div>
+
+					<div style = "clear:both;"></div>
+
+				</div>
+
+				<a href="/logout"><button id = "logout">WYLOGUJ SIĘ</button></a>
+
+			</div>
+
+		</div>
+
+	</main>
+
+	<script src = "{% static 'jquery-3.6.0.min.js' %}"></script>
+	<script src = "{% static 'game.js' %}"></script>
+
+</body>
+
+</html>
