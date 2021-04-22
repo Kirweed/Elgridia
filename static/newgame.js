@@ -12,10 +12,17 @@ const gold_div = document.getElementById('gold-bar');
 const premium_div = document.getElementById('premium-bar');
 const loading_overlay = document.querySelector('.loading-overlay');
 const tooltip_div = document.querySelector('.tooltip');
-const player_image = new Image();
+const player_image_up = new Image();
+const player_image_down = new Image();
+const player_image_right = new Image();
+const player_image_left = new Image();
 const npc_image_table = new Array();
 const enemy_image_table = new Array();
 const door_image_table = new Array();
+player_image_down.src = "../../media/character_down.png";
+player_image_up.src = "../../media/character_up.png";
+player_image_right.src = "../../media/character_right.png";
+player_image_left.src = "../../media/character_left.png";
 let allow_move = true;
 let continue_animate;
 let player;
@@ -25,7 +32,7 @@ let fin_pos;
 let move_direction;
 let ready_to_draw = false;
 
-player_image.addEventListener('load', function () {
+player_image_left.addEventListener('load', function () {
     ajax_init();
 });
 
@@ -34,8 +41,6 @@ game_canvas.height = canvas_wrapper.offsetHeight;
 
 player_canvas.width = canvas_wrapper.offsetWidth;
 player_canvas.height = canvas_wrapper.offsetHeight;
-
-player_image.src = "../../media/character.png";
 
 class MapElement {
 
@@ -109,7 +114,24 @@ class Player {
     }
 
     drawPlayer() {
-        pctx.drawImage(player_image, this.x * 32 + 1, this.y * 32 - 15);
+
+        switch(move_direction) {
+            case "s":
+                pctx.drawImage(player_image_down, this.x * 32 + 1, this.y * 32 - 15);
+                break;
+            case "w":
+                pctx.drawImage(player_image_up, this.x * 32 + 1, this.y * 32 - 15);
+                break;
+            case "a":
+                pctx.drawImage(player_image_left, this.x * 32 + 1, this.y * 32 - 15);
+                break;
+            case "d":
+                pctx.drawImage(player_image_right, this.x * 32 + 1, this.y * 32 - 15);
+                break;
+            default:
+                pctx.drawImage(player_image_down, this.x * 32 + 1, this.y * 32 - 15);
+                break;
+        }
     }
 
     updateCoords() {
@@ -189,29 +211,36 @@ function loadLocation(data) {
             let new_tooltip = tooltip_div.cloneNode(true);
             let tooltip_was_displayed = false;
 
-            canvas_wrapper.addEventListener('mousemove', function(event) {
-                if(event.offsetX >= spot.x * 32 &&
-                event.offsetX <= (spot.x + 1) * 32 &&
-                event.offsetY >= spot.y * 32 &&
-                event.offsetY <= (spot.y + 1) * 32) {
-                    if (new_tooltip == null) {
-                        new_tooltip = tooltip_div.cloneNode(true);
-                    }
-                    canvas_wrapper.appendChild(new_tooltip);
-                    new_tooltip.style.left = (spot.x * 32 - 20) + 'px';
-                    new_tooltip.style.top = (spot.y * 32 - 20) + 'px';
-                    new_tooltip.innerHTML = spot.enemy.name + " (" +
-                                            spot.enemy.level + ")";
-                    new_tooltip.style.display = 'block';
-                    tooltip_was_displayed = true;
+            canvas_wrapper.addEventListener('mousemove', addTooltipEnemy);
+
+            function addTooltipEnemy(event) {
+                if(map_elements[spot.x][spot.y].enemy == null) {
+                    canvas_wrapper.removeEventListener('mousemove', addTooltipEnemy);
                 } else {
-                    if (new_tooltip != null && tooltip_was_displayed == true) {
-                        new_tooltip.style.display = 'none';
-                        canvas_wrapper.removeChild(new_tooltip);
-                        new_tooltip = null;
+                    if(event.offsetX >= spot.x * 32 &&
+                    event.offsetX <= (spot.x + 1) * 32 &&
+                    event.offsetY >= spot.y * 32 &&
+                    event.offsetY <= (spot.y + 1) * 32) {
+                        if (new_tooltip == null) {
+                            new_tooltip = tooltip_div.cloneNode(true);
+                        }
+                        canvas_wrapper.appendChild(new_tooltip);
+                        new_tooltip.style.left = (spot.x * 32 - 20) + 'px';
+                        new_tooltip.style.top = (spot.y * 32 - 20) + 'px';
+                        new_tooltip.innerHTML = spot.enemy.name + " (" +
+                                                spot.enemy.level + ")";
+                        new_tooltip.style.display = 'block';
+                        tooltip_was_displayed = true;
+                    } else {
+                        if (new_tooltip != null && tooltip_was_displayed == true) {
+                            new_tooltip.style.display = 'none';
+                            canvas_wrapper.removeChild(new_tooltip);
+                            new_tooltip = null;
+                        }
                     }
                 }
-            });
+            }
+
         } else if(spot.door != null) {
 
             let door_direction_string;
@@ -253,29 +282,35 @@ function loadLocation(data) {
             let new_tooltip = tooltip_div.cloneNode(true);
             let tooltip_was_displayed = false;
 
-            canvas_wrapper.addEventListener('mousemove', function(event) {
-                if(event.offsetX >= spot.x * 32 &&
-                event.offsetX <= (spot.x + 1) * 32 &&
-                event.offsetY >= spot.y * 32 &&
-                event.offsetY <= (spot.y + 1) * 32) {
-                    if (new_tooltip == null) {
-                        new_tooltip = tooltip_div.cloneNode(true);
-                    }
-                    canvas_wrapper.appendChild(new_tooltip);
-                    new_tooltip.style.left = (spot.x * 32 - 20) + 'px';
-                    new_tooltip.style.top = (spot.y * 32 - 20) + 'px';
-                    new_tooltip.innerHTML = spot.door.location_name.name;
-                    new_tooltip.style.color = 'blue';
-                    new_tooltip.style.display = 'block';
-                    tooltip_was_displayed = true;
+            canvas_wrapper.addEventListener('mousemove', addTooltipDoor);
+
+            function addTooltipDoor(event) {
+                if (map_elements[spot.x][spot.y].door == null) {
+                    canvas_wrapper.removeEventListener('mousemove', addTooltipDoor);
                 } else {
-                    if (new_tooltip != null && tooltip_was_displayed == true) {
-                        new_tooltip.style.display = 'none';
-                        canvas_wrapper.removeChild(new_tooltip);
-                        new_tooltip = null;
+                    if(event.offsetX >= spot.x * 32 &&
+                    event.offsetX <= (spot.x + 1) * 32 &&
+                    event.offsetY >= spot.y * 32 &&
+                    event.offsetY <= (spot.y + 1) * 32) {
+                        if (new_tooltip == null) {
+                            new_tooltip = tooltip_div.cloneNode(true);
+                        }
+                        canvas_wrapper.appendChild(new_tooltip);
+                        new_tooltip.style.left = (spot.x * 32 - 20) + 'px';
+                        new_tooltip.style.top = (spot.y * 32 - 20) + 'px';
+                        new_tooltip.innerHTML = spot.door.location_name.name;
+                        new_tooltip.style.color = 'blue';
+                        new_tooltip.style.display = 'block';
+                        tooltip_was_displayed = true;
+                    } else {
+                        if (new_tooltip != null && tooltip_was_displayed == true) {
+                            new_tooltip.style.display = 'none';
+                            canvas_wrapper.removeChild(new_tooltip);
+                            new_tooltip = null;
+                        }
                     }
                 }
-            });
+            }
         }
     }
 }
