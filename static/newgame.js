@@ -1,7 +1,9 @@
+const map_canvas = document.getElementById('map-canvas');
 const game_canvas = document.getElementById('game-canvas');
 const player_canvas = document.getElementById('player-canvas');
 const ctx = game_canvas.getContext('2d');
 const pctx = player_canvas.getContext('2d');
+const mctx = map_canvas.getContext('2d');
 const canvas_wrapper = document.querySelector('.main-wrapper');
 const player_id = document.getElementById("player-id").innerHTML;
 const location_name_div = document.getElementById('location-name');
@@ -12,6 +14,7 @@ const gold_div = document.getElementById('gold-bar');
 const premium_div = document.getElementById('premium-bar');
 const loading_overlay = document.querySelector('.loading-overlay');
 const tooltip_div = document.querySelector('.tooltip');
+const map_image = new Image();
 const player_image_up = new Image();
 const player_image_down = new Image();
 const player_image_right = new Image();
@@ -42,15 +45,19 @@ game_canvas.height = canvas_wrapper.offsetHeight;
 player_canvas.width = canvas_wrapper.offsetWidth;
 player_canvas.height = canvas_wrapper.offsetHeight;
 
+map_canvas.width = canvas_wrapper.offsetWidth;
+map_canvas.height = canvas_wrapper.offsetHeight;
+
 class MapElement {
 
-    constructor(x, y, npc, enemy, door) {
+    constructor(x, y, npc, enemy, door, collision) {
         this.x = x;
         this.y = y;
         this.npc = npc;
         this.enemy = enemy;
         this.door = door;
         this.player = player;
+        this.collision = collision;
     }
 
     showMapElement() {
@@ -193,6 +200,10 @@ function loadLocation(data) {
     for(let i = 0; i<data.location_spot.length; i++) {
 
     let spot = data.location_spot[i];
+
+        if(spot.collision == true) {
+            map_elements[spot.x][spot.y].collision = true;
+        }
 
         if(spot.enemy != null) {
             map_elements[spot.x][spot.y].enemy = new Enemy(
@@ -385,11 +396,18 @@ function animatePlayerMove() {
     }
 }
 
+let loadLocationMap = function() {
+    map_image.addEventListener('load', function() {
+        mctx.drawImage(map_image, 0, 0);
+    });
+    map_image.src = "../../media/location_" + player.location + ".png";
+}
+
 function ajax_init() {
 
     for(let i = 0; i<map_elements.length; i++) {
         for (let j = 0; j<map_elements[i].length; j++) {
-            map_elements[i][j] = new MapElement(i * 32 + 1, j * 32 +1, null, null, null);
+            map_elements[i][j] = new MapElement(i * 32 + 1, j * 32 +1, null, null, null, false);
         }
     }
 
@@ -401,6 +419,9 @@ function ajax_init() {
             load(data);
         }
     }).then(function() {
+
+        loadLocationMap();
+
         $.ajax({
             url: "http://127.0.0.1:8000/engine/rest/locations/" + player.location + "/",
             type: 'GET',
@@ -421,6 +442,7 @@ function changeDirection(door) {
     player.location = door.to_id;
     ctx.clearRect(0, 0, game_canvas.width, game_canvas.height);
     pctx.clearRect(0, 0, player_canvas.width, player_canvas.height);
+    mctx.clearRect(0, 0, player_canvas.width, player_canvas.height);
 
     $.ajax({
       url: "http://127.0.0.1:8000/engine/rest/players/" + player_id + "/",
@@ -444,7 +466,7 @@ document.addEventListener("keydown", function(event) {
 
             case "ArrowDown":
             case "s":
-                if(player.y < 17 && map_elements[player.x][player.y + 1].enemy == null) {
+                if(player.y < 17 && map_elements[player.x][player.y + 1].collision == false) {
                     move_direction = 's';
                     start_pos = player.y;
                     fin_pos = player.y + 1;
@@ -454,7 +476,7 @@ document.addEventListener("keydown", function(event) {
 
             case "ArrowUp":
             case "w":
-                if(player.y > 0 && map_elements[player.x][player.y - 1].enemy == null) {
+                if(player.y > 0 && map_elements[player.x][player.y - 1].collision == false) {
                     move_direction = 'w';
                     start_pos = player.y;
                     fin_pos = player.y - 1;
@@ -464,7 +486,7 @@ document.addEventListener("keydown", function(event) {
 
             case "ArrowLeft":
             case "a":
-                if(player.x > 0 && map_elements[player.x - 1][player.y].enemy == null) {
+                if(player.x > 0 && map_elements[player.x - 1][player.y].collision == false) {
                     move_direction = 'a';
                     start_pos = player.x;
                     fin_pos = player.x - 1;
@@ -474,7 +496,7 @@ document.addEventListener("keydown", function(event) {
 
             case "ArrowRight":
             case "d":
-                if(player.x < 22 && map_elements[player.x + 1][player.y].enemy == null) {
+                if(player.x < 22 && map_elements[player.x + 1][player.y].collision == false) {
                     move_direction = 'd';
                     start_pos = player.x;
                     fin_pos = player.x + 1;

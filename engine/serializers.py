@@ -29,7 +29,7 @@ class LocationSpotsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LocationSpot
-        fields = ['x', 'y', 'enemy', 'door', 'door_direction']
+        fields = ['x', 'y', 'enemy', 'door', 'door_direction', 'collision']
 
 
 class LocationSerializer(serializers.ModelSerializer):

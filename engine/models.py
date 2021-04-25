@@ -43,7 +43,8 @@ class LocationSpot(models.Model):
     y = models.PositiveSmallIntegerField(blank=False, default=1)
     enemy = models.ForeignKey(Enemy, on_delete=models.CASCADE, null=True, blank=True)
     door = models.ForeignKey(to='LocationSpot', on_delete=models.CASCADE, null=True, blank=True)
-    door_direction = models.PositiveSmallIntegerField(null=True, choices=DOOR_DIRECTION_CHOICES)
+    door_direction = models.PositiveSmallIntegerField(null=True, choices=DOOR_DIRECTION_CHOICES, blank=True)
+    collision = models.BooleanField(null=False, default=False, blank=False)
 
     def __str__(self):
         return self.location_name.name + ' (' + str(self.x) + ', ' + str(self.y) + ')'
