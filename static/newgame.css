@@ -198,7 +198,17 @@ canvas {
 	height: 20px;
 	border: solid 2px #111;
 	border-radius: 12px;
-	background-color: #cf200c;
+	background-color: #fff;
+}
+
+#hit-points-bar-filling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #cf200c;
+    width: 100%;
+    border-radius: 12px;
 }
 
 #nick

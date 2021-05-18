@@ -12,6 +12,10 @@ const level_div = document.getElementById('level');
 const cords_div = document.getElementById('coords');
 const gold_div = document.getElementById('gold-bar');
 const premium_div = document.getElementById('premium-bar');
+const hit_points_info_div = document.getElementById('hit-points');
+const damage_info_div = document.getElementById('damage');
+const armor_info_div = document.getElementById('armor');
+const speed_info_div = document.getElementById('speed');
 const loading_overlay = document.querySelector('.loading-overlay');
 const tooltip_div = document.querySelector('.tooltip');
 const map_image = new Image();
@@ -97,7 +101,8 @@ class Door {
 
 class Player {
 
-    constructor(nick, x, y, level, experience, location, gold, premium_gold) {
+    constructor(nick, x, y, level, experience, location, gold, premium_gold,
+                hit_points, current_hit_points, damage, armor, attack_speed) {
         this.nick = nick;
         this.x = x;
         this.y = y;
@@ -106,6 +111,11 @@ class Player {
         this.location = location;
         this.gold = gold;
         this.premium_gold = premium_gold;
+        this.hit_points = hit_points;
+        this.current_hit_points = current_hit_points;
+        this.damage = damage;
+        this.armor = armor;
+        this.attack_speed = attack_speed;
     }
 
     updateExp() {
@@ -118,6 +128,15 @@ class Player {
         let progress = (lvl_exp_bar * 100) / exp_between;
         let progress_string = progress.toString() + "%";
         exp_bar.style.width = progress_string;
+    }
+
+    updateHealthBar() {
+        let health_bar = document.getElementById('hit-points-bar-filling');
+        let health_percent_div = document.getElementById('hit-points-percent');
+        let health_status = (this.current_hit_points/this.hit_points) * 100;
+        let health_string = health_status.toString() + "%";
+        health_bar.style.width = health_string;
+        health_percent_div.innerHTML = health_string;
     }
 
     drawPlayer() {
@@ -185,15 +204,21 @@ function updatePosition(player_to_update) {
 
 function load(data) {
     player = new Player(
-        data.user.username, data.x, data.y, data.level, data.experience, data.location, data.gold, data.premium_gold
+        data.user.username, data.x, data.y, data.level, data.experience, data.location, data.gold, data.premium_gold,
+        data.hit_points, data.current_hit_points, data.damage, data.armor, data.attack_speed
     );
 
     nick_div.innerHTML = player.nick;
     level_div.innerHTML = 'Poziom: ' + player.level;
-    player.updateExp();
     cords_div.innerHTML = player.x + ', ' + player.y;
     gold_div.innerHTML = player.gold;
     premium_div.innerHTML = player.premium_gold;
+    hit_points_info_div.innerHTML = player.hit_points;
+    damage_info_div.innerHTML = player.damage;
+    armor_info_div.innerHTML = player.armor;
+    speed_info_div.innerHTML = player.attack_speed;
+    player.updateExp();
+    player.updateHealthBar();
 }
 
 function loadLocation(data) {
@@ -217,7 +242,7 @@ function loadLocation(data) {
             enemy_image_table.push(new Image());
             enemy_image_table[enemy_image_table.length-1].src = spot.enemy.image;
             enemy_image_table[enemy_image_table.length-1].addEventListener('load', function() {
-                ctx.drawImage(enemy_image_table[enemy_image_table.length-1], spot.x * 32 + 1, spot.y * 32 + 1);
+                ctx.drawImage(this, spot.x * 32 + 1, spot.y * 32 + 1);
             });
             let new_tooltip = tooltip_div.cloneNode(true);
             let tooltip_was_displayed = false;
@@ -287,7 +312,7 @@ function loadLocation(data) {
             door_image_table.push(new Image());
             door_image_table[door_image_table.length-1].src = map_elements[spot.x][spot.y].door.image;
             door_image_table[door_image_table.length-1].addEventListener('load', function() {
-                ctx.drawImage(door_image_table[door_image_table.length-1], spot.x * 32 + 1, spot.y * 32 + 1);
+                ctx.drawImage(this, spot.x * 32 + 1, spot.y * 32 + 1);
             });
 
             let new_tooltip = tooltip_div.cloneNode(true);
@@ -390,6 +415,7 @@ function animatePlayerMove() {
         player.updateCoords();
         allow_move = true;
         if (map_elements[player.x][player.y].door != null) {
+            allow_move = false;
             changeDirection(map_elements[player.x][player.y].door);
         }
         cancelAnimationFrame(req_id);
@@ -434,6 +460,7 @@ function ajax_init() {
     }).then(function() {
         player.drawPlayer();
         setTimeout(function() {loading_overlay.style.display = 'none';}, 300);
+        allow_move = true;
     });
 }
 

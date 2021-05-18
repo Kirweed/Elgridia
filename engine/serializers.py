@@ -51,4 +51,5 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ['level', 'experience', 'x', 'y', 'location', 'user', 'gold', 'premium_gold']
+        fields = ['level', 'experience', 'x', 'y', 'location', 'user', 'gold', 'premium_gold',
+                  'hit_points', 'current_hit_points', 'damage', 'armor', 'attack_speed']

@@ -11,6 +11,8 @@ class Enemy(models.Model):
     hit_points = models.PositiveBigIntegerField(default=1, blank=False)
     damage = models.PositiveBigIntegerField(default=0, blank=False)
     image = models.ImageField(upload_to="enemies", blank=False)
+    armor = models.PositiveBigIntegerField(blank=False, default=0)
+    attack_speed = models.DecimalField(blank=False, max_digits=12, decimal_places=3, default=1)
 
     def __str__(self):
         return self.name + " (" + str(self.level) + ")"
@@ -60,6 +62,11 @@ class Player(models.Model):
     active = models.CharField(blank=False, default='0', max_length=31)
     gold = models.PositiveBigIntegerField(blank=False, default=0)
     premium_gold = models.PositiveIntegerField(blank=False, default=0)
+    hit_points = models.PositiveBigIntegerField(blank=False, default=1)
+    current_hit_points = models.PositiveBigIntegerField(blank=False, default=1)
+    damage = models.PositiveBigIntegerField(blank=False, default=0)
+    armor = models.PositiveBigIntegerField(blank=False, default=0)
+    attack_speed = models.DecimalField(blank=False, max_digits=12, decimal_places=3, default=1)
 
     def __str__(self):
         return self.user.username + " (" + str(self.level) + ")"
